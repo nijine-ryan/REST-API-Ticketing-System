@@ -29,18 +29,19 @@ _____________________________
 ( Ticketing System > localData )
 
 
-   File Name                                      File Path                                                                    Description   
+   File Name                                          File Path                                                                            Description   
  
-people.json              ------       Ticketing System > localData > people.json                  ------              people.json file used to store the static
-                                                                                                                      data of 5 person.
+people.json              ------         (Ticketing System > localData > people.json )                  ------              * people.json file used to store the static
+                                                                                                                         data of 5 person.
 
 
-tickets.json             ------       Ticketing System > localData > tickets.json                 ------               tickets.json file used to store the raised tickets 
-                                                                                                                       after it get assigned to a person     
-
-roundRobinKey.json       ------       Ticketing System > localData > .roundRobinKey.json          ------                roundRobinKey.json file is used to
-                                                                                                                        store a number which hold the 
-                                                                                                                        round-robin principle between server restarts.
+tickets.json             ------         (Ticketing System > localData > tickets.json)                  ------              * tickets.json file used to store
+                                                                                                                         the raised tickets 
+                                                                                                                         after it get assigned to a person     
+ 
+roundRobinKey.json       ------         (Ticketing System > localData > roundRobinKey.json)            ------                * roundRobinKey.json file is used to
+                                                                                                                         store a number which hold the 
+                                                                                                                         round-robin principle between server restarts.
 
 
 
@@ -77,7 +78,8 @@ ______________________________
       
       Controllers Function                                     Route                                                                       Description 
 
-    assignTicket         ------                 router.route('/ticket').post(assignTicket)                 ------         * Assign the raised ticket to a person in terms of round-robin principle 
+    assignTicket         ------                 router.route('/ticket').post(assignTicket)                 ------         * Assign the raised ticket to a person in
+                                                                                                                          terms of round-robin principle 
                                                                                                                           *  Store the ticket in the ticket.json        (Ticketing System > localData > tickets.json)   file, with person id which the ticket get  assigned
                                                                                                             
     getPeople            ------                  router.route('/people').get(getPeople)                     ------         * getPeople function retrieve people data 
