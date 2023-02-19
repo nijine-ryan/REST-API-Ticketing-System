@@ -93,5 +93,5 @@ ______________________________
 
 
 --------------------------------------------------------------------------------------------------------------------- 
-BEFORE START THE APPLICATION MAKE SURE THAT YOU HAD ALL PACKAGES FROM NPM(take a glance at package.jsno)
+BEFORE START THE APPLICATION MAKE SURE THAT YOU HAD ALL PACKAGES FROM NPM(take a glance at package.json)
 ---------------------------------------------------------------------------------------------------------------------
