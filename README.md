@@ -5,6 +5,9 @@ Backend Web Development Assessment
       PROJECT ANATOMY   
 ------------------------------
 
+
+
+
 DEPENDENCIES INSTALLED VIA NPM 
 _____________________________
 
@@ -15,25 +18,32 @@ _____________________________
  ____________________________
  
  1.morgan
- 
+
+
+
+
+
 LOCAL DATA 
 _____________________________
 
 ( Ticketing System > localData )
 
 
-File Name                             File Path                                                                    Description   
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   File Name                                      File Path                                                                    Description   
  
-people.json              ------       Ticketing System > localData > people.json                  ------  people.json file used to store the static data of 5 person.
+people.json              ------       Ticketing System > localData > people.json                  ------              people.json file used to store the static
+                                                                                                                      data of 5 person.
 
 
-tickets.json             ------       Ticketing System > localData > tickets.json                 ------  tickets.json file used to store the raised tickets 
-                                                                                                          after it get assigned to a person     
+tickets.json             ------       Ticketing System > localData > tickets.json                 ------               tickets.json file used to store the raised tickets 
+                                                                                                                       after it get assigned to a person     
 
-roundRobinKey.json       ------       Ticketing System > localData > .roundRobinKey.json          ------  roundRobinKey.json file is used to
-                                                                                                          store a number which hold the 
-                                                                                                          round-robin principle between server restarts.
+roundRobinKey.json       ------       Ticketing System > localData > .roundRobinKey.json          ------                roundRobinKey.json file is used to
+                                                                                                                        store a number which hold the 
+                                                                                                                        round-robin principle between server restarts.
+
+
+
 
 
 
@@ -56,13 +66,17 @@ _____________________________
 
   3.1 router.route('/restart').put(returnToDefault)
 
+
+
+
+
 CONTROLLERS
 ______________________________
 
 (Ticketing System > controllers > commonController.js)
       
       Controllers Function                                     Route                                                                       Description 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     assignTicket         ------                 router.route('/ticket').post(assignTicket)                 ------         * Assign the raised ticket to a person in terms of round-robin principle 
                                                                                                                           *  Store the ticket in the ticket.json        (Ticketing System > localData > tickets.json)   file, with person id which the ticket get  assigned
                                                                                                             
@@ -80,6 +94,12 @@ ______________________________
     
     returnToDefault      ------   router.route('/restart').put(returnToDefault)                               ------       * returnToDefault reset the  people.json, 
                                                                                                                             tickets.json, roundRobinKey.json to their default values 
+
+
+
+
+
+
 HELPER FUNCTIONS 
 ______________________________
 
@@ -96,6 +116,8 @@ ______________________________
     writeData(fileName, data) - OverWrite the given file with the provided data . 
     
     restartServer             - Used to reset the local datas to default data.
+
+
 
 
 
