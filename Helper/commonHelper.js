@@ -1,4 +1,5 @@
 const fs = require('fs');
+const shortid = require('shortid');
 const { peopleDefault, ticketDefault, defaultKey } = require('../defaultData');
 
 async function readData(fileName) {
@@ -42,7 +43,8 @@ function swap(value) {
 
 // assign function assign the ticket to a person in terms of
 // round-robin principl
-async function assign(ticketId, raisedUserId, issu_dis) {
+async function assign(userId, issu_dis) {
+    const ticketId = shortid.generate();
     return new Promise((res, rej) => {
         readData('people.json')
             .then(people => {
@@ -60,7 +62,7 @@ async function assign(ticketId, raisedUserId, issu_dis) {
                                 .catch(err => rej(err))
 
                             const personId = people[i].id;
-                            storeTicket(ticketId, personId, raisedUserId, issu_dis)
+                            storeTicket(ticketId, personId, userId, issu_dis)
                                 .then((res) => res(res))
                                 .catch(err => rej(err))
                             let keyToBeUpdate = key + 1;
@@ -72,8 +74,9 @@ async function assign(ticketId, raisedUserId, issu_dis) {
                                 .catch(err => rej(err))
                         }
                         res({
+                            msg: 'Ticket assigned successfully',
                             successful: true,
-                            msg: 'Ticket assigned successfully'
+                            // data
                         })
                     })
             }).catch(err => {
@@ -85,29 +88,23 @@ async function assign(ticketId, raisedUserId, issu_dis) {
 
 // storeTicket function store the tickets after they get 
 // assigned to a person
-async function storeTicket(ticketId, assignedUserId, raisedUserId, issu_dis) {
+async function storeTicket(ticketId, assignedUserId, userId, issu_dis) {
 
     return new Promise((res, rej) => {
         const raisedTicket = {
             id: ticketId,
             issu_dis,
             assignedUserId,
-            raisedUserId
+            userId
         }
         readData("tickets.json")
             .then(tickets => {
                 const dataToBeWrite = tickets;
                 dataToBeWrite.push(raisedTicket);
                 writeData('tickets.json', dataToBeWrite)
-                    .then(() => res({
-                        successful: true,
-                        msg: "Ticket stored successfully"
-                    }))
+                    .then(() => res())
                     .catch(err => rej(err));
-                return res({
-                    successful: true,
-                    msg: "Tickets file read successfully"
-                })
+                res()
 
             }).catch(err => {
                 rej(err);
